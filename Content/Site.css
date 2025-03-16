@@ -1,0 +1,25 @@
+﻿html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: var(--light);
+}
+/* Makes it so that the carousel dissappears when the picture screen is smaller than 700 px */
+@media screen and (max-width: 700px) { 
+    .carousel {
+        display: none;
+    }
+}

@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Consult";
+}
+
+<h2>Book a consultation with your Lecturer.</h2>
+
+<h4>Your Details</h4>
+
+<form asp-action="SubmitConsultation" method="post" novalidate>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="Firstname" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="Firstname" name="Firstname" required> <!-- Specifies type of data that is inputted and how it should be verified ( HTML5 ) -->
+            <span class="text-danger" asp-validation-for="Firstname"></span> <!-- Validation needed to be check to ensure the Firstname messagebox is filled -->
+        </div>
+        <div class="col-md-6">
+            <label for="Lastname" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="Lastname" name="Lastname" required> <!-- Specifies type of data that is inputted and how it should be verified ( HTML5 ) -->
+            <span class="text-danger" asp-validation-for="Lastname"></span> <!-- Validation needed to be check to ensure the Lastname messagebox is filled -->
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="Email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" required> <!-- Specifies type of data that is inputted and how it should be verified ( HTML5 ) -->
+        <span class="text-danger" asp-validation-for="Email"></span> <!-- Validation needed to be check to ensure the  Email messagebox is filled -->
+    </div>
+
+    <div class="mb-3">
+        <label for="Comments" class="form-label">Comments</label>
+        <textarea class="form-control" id="Comments" name="Comments" rows="4"></textarea> <!-- doesnt need text and doesnt need to be verified-->
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<script>
+    (function () {
+        'use strict';
+        var forms = document.querySelectorAll('form');
+        Array.prototype.slice.call(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) { // Check if fields are empty
+                    event.preventDefault(); // Prevent the form from submitting if the fields are empty
+                    event.stopPropagation(); // Prevent the form from building up errors
+                } else {
+                    alert('Submission Successful.');
+                }
+                form.classList.add('was-validated'); // bootstrap
+            }, false);
+        });
+    })();
+</script>
